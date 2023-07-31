@@ -39,8 +39,7 @@ on-run-start: "{{ Generate_external_tables() }}"
 
 models:
   my_new_project:
-    # Config indicated by + and applies to all files under models/example/
-   
+    # Config indicated by + and applies to all files under models/example/  
     NADL_DATA_LOAD_ACCESS:
         +materialized: view
         +database: DEV_COMX_GLOBAL
@@ -49,6 +48,27 @@ models:
           +materialized: table
           +database: DEV_COMX_GLOBAL
           +schema: DIGSHELF_INTEGRATION
+
+
+
+models:
+  dbt_poc:
+    # Config indicated by + and applies to all files under models/example/
+    example:
+      +materialized: view
+    RAW:
+      +materialized: table
+    L1:
+      +materialized: view
+    NADL_DATA_LOAD_ACCESS:
+        +materialized: view
+        +database: DEV_COMX_GLOBAL
+        +schema: DIGSHELF_ACCESS  
+        NADL_DATA_LOAD_INTEGRATION:
+          +materialized: table
+          +database: DEV_COMX_GLOBAL
+          +schema: DIGSHELF_INTEGRATION
+
       
 
      
