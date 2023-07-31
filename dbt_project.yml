@@ -31,8 +31,49 @@ clean-targets:         # directories to be removed by `dbt clean`
 # In this example config, we tell dbt to build all models in the example/ directory
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
+
+
+    #create external tables
+on-run-start: "{{ Generate_external_tables() }}"
+
+
 models:
   my_new_project:
-    # Applies to all files under models/example/
+    # Config indicated by + and applies to all files under models/example/  
+    NADL_DATA_LOAD_ACCESS:
+        +materialized: view
+        +database: DEV_COMX_GLOBAL
+        +schema: DIGSHELF_ACCESS  
+        NADL_DATA_LOAD_INTEGRATION:
+          +materialized: table
+          +database: DEV_COMX_GLOBAL
+          +schema: DIGSHELF_INTEGRATION
+
+
+
+models:
+  dbt_poc:
+    # Config indicated by + and applies to all files under models/example/
     example:
-      materialized: view
+      +materialized: view
+    RAW:
+      +materialized: table
+    L1:
+      +materialized: view
+    NADL_DATA_LOAD_ACCESS:
+        +materialized: view
+        +database: DEV_COMX_GLOBAL
+        +schema: DIGSHELF_ACCESS  
+        NADL_DATA_LOAD_INTEGRATION:
+          +materialized: table
+          +database: DEV_COMX_GLOBAL
+          +schema: DIGSHELF_INTEGRATION
+
+      
+
+     
+    
+
+      
+     
+
