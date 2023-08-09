@@ -1,5 +1,5 @@
 
-{{ config(materialized='view'        
+{{ config(materialized='view',database='DEV_COMX_GLOBAL',schema='DIGSHELF_ACCESS'       
 ) }}
 
 with final as (

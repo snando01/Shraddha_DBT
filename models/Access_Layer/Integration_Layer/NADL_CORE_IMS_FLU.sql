@@ -1,5 +1,5 @@
 
-{{ config(materialized='table'        
+{{ config(materialized='table',database = 'DEV_COMX_GLOBAL',schema = 'DIGSHELF_INTEGRATION'     
 ) }}
 
 with final as (
